@@ -49,6 +49,7 @@ public class Key : MonoBehaviour
 			line.SetPosition(1, key.transform.position + Vector3.back * 0.15f);
 		}
 		
+		// Draw key
 		if (_dragging == this)
 		{
 			_material.color = Color.white;

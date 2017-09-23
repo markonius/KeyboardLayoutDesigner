@@ -6,7 +6,7 @@ using System.Linq;
 
 public class KeyboardController : MonoBehaviour 
 {
-	public Row[] _rows = new Row[12];
+	public List<Row> _rows = new List<Row>();
 
 	private GameObject _keyPrefab;
 	private GameObject _linePrefab;
@@ -15,23 +15,61 @@ public class KeyboardController : MonoBehaviour
 	public int _maxKeysPerRow = 15;
 	public float _keysXOffset = 10;
 	public float _keysYOffset = 4;
+	public bool _qwerty;
 
 	public string _layout;
 
 	private void Start () 
 	{
-		_rows[0] = new Row(13, new Vector2(0, 0), transform, this);
-		_rows[1] = new Row(13, new Vector2(0, -0.3f), transform, this);
-		_rows[2] = new Row(13, new Vector2(0, -0.6f), transform, this);
-		_rows[3] = new Row(12, new Vector2(1.5f, -1), transform, this);
-		_rows[4] = new Row(12, new Vector2(1.5f, -1.3f), transform, this);
-		_rows[5] = new Row(12, new Vector2(1.5f, -1.6f), transform, this);
-		_rows[6] = new Row(12, new Vector2(1.75f, -2f), transform, this);
-		_rows[7] = new Row(12, new Vector2(1.75f, -2.3f), transform, this);
-		_rows[8] = new Row(12, new Vector2(1.75f, -2.6f), transform, this);
-		_rows[9] = new Row(11, new Vector2(1.25f, -3), transform, this);
-		_rows[10] = new Row(11, new Vector2(1.25f, -3.3f), transform, this);
-		_rows[11] = new Row(11, new Vector2(1.25f, -3.6f), transform, this);
+		if (_qwerty)
+		{
+			_rows.Add(new Row(13, new Vector2(0, 0), transform, this));
+			_rows.Add(new Row(13, new Vector2(0, -0.3f), transform, this));
+			_rows.Add(new Row(13, new Vector2(0, -0.6f), transform, this));
+			_rows.Add(new Row(12, new Vector2(1.5f, -1), transform, this));
+			_rows.Add(new Row(12, new Vector2(1.5f, -1.3f), transform, this));
+			_rows.Add(new Row(12, new Vector2(1.5f, -1.6f), transform, this));
+			_rows.Add(new Row(12, new Vector2(1.75f, -2f), transform, this));
+			_rows.Add(new Row(12, new Vector2(1.75f, -2.3f), transform, this));
+			_rows.Add(new Row(12, new Vector2(1.75f, -2.6f), transform, this));
+			_rows.Add(new Row(11, new Vector2(1.25f, -3), transform, this));
+			_rows.Add( new Row(11, new Vector2(1.25f, -3.3f), transform, this));
+			_rows.Add( new Row(11, new Vector2(1.25f, -3.6f), transform, this));
+		}
+		else
+		{
+			_rows.Add(new Row(6, new Vector2(0, 0), transform, this));
+			_rows.Add(new Row(6, new Vector2(0, -0.3f), transform, this));
+			_rows.Add(new Row(6, new Vector2(0, -0.6f), transform, this));
+
+			_rows.Add(new Row(6, new Vector2(0, -1), transform, this));
+			_rows.Add(new Row(6, new Vector2(0, -1.3f), transform, this));
+			_rows.Add(new Row(6, new Vector2(0, -1.6f), transform, this));
+
+			_rows.Add(new Row(6, new Vector2(0f, -2f), transform, this));
+			_rows.Add(new Row(6, new Vector2(0f, -2.3f), transform, this));
+			_rows.Add(new Row(6, new Vector2(0f, -2.6f), transform, this));
+
+			_rows.Add(new Row(6, new Vector2(0f, -3), transform, this));
+			_rows.Add( new Row(6, new Vector2(0f, -3.3f), transform, this));
+			_rows.Add( new Row(6, new Vector2(0f, -3.6f), transform, this));
+			// ----
+			_rows.Add(new Row(6, new Vector2(8, 0), transform, this));
+			_rows.Add(new Row(6, new Vector2(8, -0.3f), transform, this));
+			_rows.Add(new Row(6, new Vector2(8, -0.6f), transform, this));
+
+			_rows.Add(new Row(6, new Vector2(8, -1), transform, this));
+			_rows.Add(new Row(6, new Vector2(8, -1.3f), transform, this));
+			_rows.Add(new Row(6, new Vector2(8, -1.6f), transform, this));
+
+			_rows.Add(new Row(6, new Vector2(8, -2f), transform, this));
+			_rows.Add(new Row(6, new Vector2(8, -2.3f), transform, this));
+			_rows.Add(new Row(6, new Vector2(8, -2.6f), transform, this));
+
+			_rows.Add(new Row(6, new Vector2(8, -3), transform, this));
+			_rows.Add( new Row(6, new Vector2(8, -3.3f), transform, this));
+			_rows.Add( new Row(6, new Vector2(8, -3.6f), transform, this));
+		}
 
 		_keyPrefab = Resources.Load<GameObject>("Key");
 		_linePrefab = Resources.Load<GameObject>("Connection");

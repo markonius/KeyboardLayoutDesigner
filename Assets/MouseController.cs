@@ -18,6 +18,7 @@ public class MouseController : MonoBehaviour
 				if (key != null)
 				{
 					Key._dragging = key;
+					Debug.Log(key._normalCount);
 					return;
 				}
 
